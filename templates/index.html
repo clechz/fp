@@ -1,0 +1,472 @@
+{% extends'layout.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<!----------------------spechial content------------------------>
+
+    <div id="container">
+        <div id="main">
+
+
+            <div  style="width: 100%;" id="m" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#m" data-slide-to="0" class="active"></li>
+                <li data-target="#m" data-slide-to="1"></li>
+                <li data-target="#m" data-slide-to="2"></li>
+                <li data-target="#m" data-slide-to="3"></li>
+
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img width="5%"  class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20201024/43a718653adcab4c807fa6902634bc3d/en_slider-01.gif" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img width="5%" class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20201023/920086185dc42e1ab45f1bb749f92e5b/en_slider-01.gif" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img width="5%" class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20200927/a8a50553fe7e522e0f659b1d5bdd4377/en_slider-01.png" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img width="5%" class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20200925/b45567b7d5145c52b13f90ba8241ecd3/en_slider-01.gif" alt="Second slide">
+                </div>
+                </div>
+              <a class="carousel-control-prev" href="#m" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only border-dark">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#m" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only border-dark">Next</span>
+              </a>
+
+            </div>
+
+
+            <br>
+            <br>
+            <center>
+                <div class="categories">
+                    <div class="categories-h"><sub><h2>Shop By Category</h2></sub></div>
+                    <br>
+                    <br>
+                    <div class="categories-img">
+                        <div class="categories-row">
+                            <a class="category" href="/#home"><img src="/static/images/categories/Home.png" alt="Home"></a>
+                            <a class="category" href="/#men"><img src="/static/images/categories/fashion.png" alt="Fashion"></a>
+                            <a class="category" href="/#electronics"><img src="/static/images/categories/electronics.png" alt="Electronics"></a>
+                            <a class="category" href="/#electronics"><img src="/static/images/categories/gaming.png" alt="Gaming"></a>
+                            <a class="category" href="/#electronics"><img src="https://k.nooncdn.com/cms/pages/20200328/b45d91889efe7dfa6788b75b43bd26c3/en_cat-module-11.png" alt=""></a>
+                            <a class="category" href="/#sport"><img src="https://k.nooncdn.com/cms/pages/20200328/b45d91889efe7dfa6788b75b43bd26c3/en_cat-module-03.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                    {% if not reco[0] %}
+                        <!--genral recomendation-->
+
+                    {% else %}
+                    <h2 class="categories-h">Recomended For You</h2>
+                    <div class="products">
+                        <div class="row">
+                            {% for product in reco %}
+                                <span>
+                                    <img class="product-img" src="{{product['img_path']}}" alt="{{product['title']}}">
+                                        <p class="prouduct-name">{{product["title"]}}</p>
+                                        <p>{{product["desc"][0:20]}}</p>
+                                        <p>{{product["desc"][20:40]}}..</p>
+                                        <h5>USD {{product["price"]}}</h5>
+
+                                    <!--add to wish-list-->
+                                    <form action="/wish" method="post" class="form-group">
+                                        <input name="product_id" type="hidden" value="{{product['id']}}">
+                                        <button class="btn btn-danger-outline add-wish" id="wish" type="submit"><i class="fas fa-heart"></i></button>
+                                    </form>
+
+                                    <!--add to cart-->
+                                    <form action="/cart" method="post" class="form-group">
+                                        <input name="product_id" type="hidden" value="{{product['id']}}">
+                                        <button class="btn btn-primary-outline add-cart" id="cart" type="submit"><i class="fas fa-shopping-cart"></i></button>
+                                    </form>
+
+                                    <button class="btn btn-warning product-tag-pc">Recomended!</button>
+
+                                </span>
+                            {% endfor %}
+
+                            </div>
+                        </div>
+
+                    {% endif %}
+                <br>
+                <br>
+                <br>
+
+
+            <div  style="width: 95.5%;" id="e" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#e" data-slide-to="0" class="active"></li>
+                <li data-target="#e" data-slide-to="1"></li>
+                <li data-target="#e" data-slide-to="2"></li>
+                <li data-target="#e" data-slide-to="3"></li>
+
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img width="5%" class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20201023/920086185dc42e1ab45f1bb749f92e5b/en_slider-01.gif" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img width="5%"  class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20200922/4e95fdf55cb11f9b206ac3365071ceee/en_slider-01.png" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img width="5%" class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20200927/a8a50553fe7e522e0f659b1d5bdd4377/en_slider-01.png" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img width="5%" class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20200925/b45567b7d5145c52b13f90ba8241ecd3/en_slider-01.gif" alt="Second slide">
+                </div>
+                </div>
+              <a class="carousel-control-prev" href="#e" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only border-dark">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#e" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only border-dark">Next</span>
+              </a>
+
+            </div>
+
+                <center>
+                <form action="/search" method="post">
+                    <div id="electronics" class="electronics">
+                        <input name="search" type="hidden" value="Electronics">
+                        <div class="row-electronics">
+                            <button class="btn elec-img" type="submit"><img class="elec-img" width="300px" src="https://k.nooncdn.com/cms/pages/20200325/9dfc41a31407cd208af0ba5ccd827821/en_cat-module-Gaming.jpg" alt=""></button>
+
+                            <button class="btn elec-img" type="submit"><img class="elec-img" width="300px" src="https://k.nooncdn.com/cms/pages/20200325/9dfc41a31407cd208af0ba5ccd827821/en_cat-module-Computers_networking.jpg" alt=""></button>
+
+                            <button class="btn elec-img" type="submit"><img class="elec-img" width="300px" src="https://k.nooncdn.com/cms/pages/20200325/9dfc41a31407cd208af0ba5ccd827821/en_cat-module-mobile.jpg" alt=""></button>
+
+                            <button class="btn elec-img" type="submit"><img class="elec-img" width="300px" src="https://k.nooncdn.com/cms/pages/20200325/9dfc41a31407cd208af0ba5ccd827821/en_cat-module-tablets.jpg" alt=""></button>
+
+                            <button class="btn elec-img" type="submit"><img class="elec-img" width="300px" src="https://k.nooncdn.com/cms/pages/20201020/1a712869d3f0a3ce1f14e7ae8725297f/en_cat-module-wearables-ksa.jpg" alt="/wearables-store" class="jsx-1280509355"></button>
+
+                            <button class="btn elec-img" type="submit"><img class="elec-img" width="300px" src="https://k.nooncdn.com/cms/pages/20201020/1a712869d3f0a3ce1f14e7ae8725297f/en_cat-module-Audio_Video-ksa.jpg" alt="/audio-video" class="jsx-1280509355"></button>
+
+                            <button class="btn elec-img" type="submit"><img class="elec-img" width="300px" src="https://k.nooncdn.com/cms/pages/20201020/1a712869d3f0a3ce1f14e7ae8725297f/en_cat-module-Camera-ksa.jpg" alt="/cameras" class="jsx-1280509355"></button>
+
+                            <button class="btn elec-img" type="submit"><img class="elec-img" width="300px" src="https://k.nooncdn.com/cms/pages/20201020/1a712869d3f0a3ce1f14e7ae8725297f/en_cat-module-Accessories-ksa.jpg" alt="/acc-store" class="jsx-1280509355"></button>
+
+                        </div>
+                        <br><br>
+                        <center>
+                        <h2 class="categories-h">Electronics</h2>
+                        <div class="products">
+                            <div class="row">
+                                {% for product in electronics %}
+                                    <span>
+                                        <img class="product-img" src="{{product['img_path']}}" alt="{{product['title']}}">
+                                            <p class="prouduct-name">{{product["title"]}}</p>
+                                            <p>{{product["desc"][0:20]}}</p>
+                                            <p>{{product["desc"][20:40]}}..</p>
+                                            <h5>USD {{product["price"]}}</h5>
+
+                                        <!--add to wish-list-->
+                                        <form action="/wish" method="post" class="form-group">
+                                            <input name="product_id" type="hidden" value="{{product['id']}}">
+                                            <button class="btn btn-danger-outline add-wish" id="wish" type="submit"><i class="fas fa-heart"></i></button>
+                                        </form>
+
+                                        <!--add to cart-->
+                                        <form action="/cart" method="post" class="form-group">
+                                            <input name="product_id" type="hidden" value="{{product['id']}}">
+                                            <button class="btn btn-primary-outline add-cart" id="cart" type="submit"><i class="fas fa-shopping-cart"></i></button>
+                                        </form>
+
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                </center>
+
+            <div  style="width: 93.3%;" id="f" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#f" data-slide-to="0" class="active"></li>
+                <li data-target="#f" data-slide-to="1"></li>
+
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img width="5%" class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20200521/05b897b6a88519cc3a8fcc6180fe9da6/en_hero-01.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img width="5%"  class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20200910/f8a805c8f5437e6e544da17320a7e582/en_banner-02.png" alt="First slide">
+                </div>
+               </div>
+              <a class="carousel-control-prev" href="#f" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only border-dark">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#f" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only border-dark">Next</span>
+              </a>
+
+            </div>
+
+                <div id="men">
+                    <form action="/search" method="post">
+                        <!--<div class="men-row">-->
+                        <!--    <input name="search" type="hidden" value="Fashion">-->
+                        <!--    <button class="btn" type="submit"><img class="elec-img" width="400px" src="https://k.nooncdn.com/cms/pages/20200325/9dfc41a31407cd208af0ba5ccd827821/en_cat-module-men-01.png" alt=""></button>-->
+                        <!--    <button class="btn" type="submit"><img class="elec-img" width="400px" src="https://k.nooncdn.com/cms/pages/20200325/9dfc41a31407cd208af0ba5ccd827821/en_cat-module-men-02.png" alt=""></button>-->
+                        <!--    <button class="btn" type="submit"><img class="elec-img" width="400px" src="https://k.nooncdn.com/cms/pages/20200325/9dfc41a31407cd208af0ba5ccd827821/en_cat-module-men-08.png" alt=""></button>-->
+                        <!--</div>-->
+                        <!--<br><br>-->
+                        <div class="men-row">
+                            <button class="btn" type="submit"><img class="elec-img" width="300px" src="https://k.nooncdn.com/cms/pages/20200726/04b085fc70aeaace2e0455892cb9a64e/en_cat-clothing-01.png" alt="/fashion/men-31225/clothing-16204" class="jsx-1280509355"></button>
+                            <button class="btn" type="submit"><img class="elec-img" width="300px" src="https://k.nooncdn.com/cms/pages/20200519/654fb17ee19d00163b699234b11ac93f/en_cat-footwear-02.png" alt="/fashion/men-31225/shoes-17421" class="jsx-1280509355"></button>
+                            <button class="btn" type="submit"><img class="elec-img" width="300px" src="https://k.nooncdn.com/cms/pages/20200519/654fb17ee19d00163b699234b11ac93f/en_cat-bags_luggage-03.png" alt="/bags-luggage-men" class="jsx-1280509355"></button>
+                            <button class="btn" type="submit"><img class="elec-img" width="300px" src="https://k.nooncdn.com/cms/pages/20200519/654fb17ee19d00163b699234b11ac93f/en_cat-watches_eyewear-04.png" alt="/bau-men-watches-eyewear" class="jsx-1280509355"></button>
+                        </div>
+                    </form>
+                    <br><br>
+                    <center>
+                    <h2 class="categories-h">Men's Fashion</h2>
+                    <div class="products">
+                        <div class="row">
+                            {% for product in fashion %}
+                                <span>
+                                    <img class="product-img" src="{{product['img_path']}}" alt="{{product['title']}}">
+                                        <p class="prouduct-name">{{product["title"]}}</p>
+                                        <p>{{product["desc"][0:20]}}</p>
+                                        <p>{{product["desc"][20:40]}}..</p>
+                                        <h5>USD {{product["price"]}}</h5>
+
+                                    <!--add to wish-list-->
+                                    <form action="/wish" method="post" class="form-group">
+                                        <input name="product_id" type="hidden" value="{{product['id']}}">
+                                        <button class="btn btn-danger-outline add-wish" id="wish" type="submit"><i class="fas fa-heart"></i></button>
+                                    </form>
+
+                                    <!--add to cart-->
+                                    <form action="/cart" method="post" class="form-group">
+                                        <input name="product_id" type="hidden" value="{{product['id']}}">
+                                        <button class="btn btn-primary-outline add-cart" id="cart" type="submit"><i class="fas fa-shopping-cart"></i></button>
+                                    </form>
+
+                                </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </center>
+            </div>
+            <div  style="width: 91.5%;" id="h" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#h" data-slide-to="0" class="active"></li>
+                <li data-target="#h" data-slide-to="1"></li>
+                <li data-target="#h" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img width="5%"  class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20200913/79d172d78151561ccb00475e17e20b3d/en_slider-01.png" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img width="5%" class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20201019/d0430098f54c838c39cbfda7f27497b3/en_slider-01-uae.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img width="5%" class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20200525/709a85693eef7175f041f8e54f1d6598/en_slider-01.png" alt="Third slide">
+                </div>
+
+
+              </div>
+              <a class="carousel-control-prev" href="#h" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only border-dark">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#h" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only border-dark">Next</span>
+              </a>
+
+            </div>
+
+
+            <div id="home">
+                <form action="/search" method="post">
+                    <div class="men-row">
+                        <input name="search" type="hidden" value="Home">
+                        <button class="btn" type="submit"><img class="elec-img" width="600px" src="https://k.nooncdn.com/cms/pages/20191006/23284486c59279f701cb09eecc542cb9/en_cat-module-15.jpg" alt=""></button>
+                        <button class="btn" type="submit"><img class="elec-img" width="600px" src="https://k.nooncdn.com/cms/pages/20191006/23284486c59279f701cb09eecc542cb9/en_cat-module-14.jpg" alt=""></button>
+                        <button class="btn" type="submit"><img class="elec-img" width="600px" src="https://k.nooncdn.com/cms/pages/20191006/23284486c59279f701cb09eecc542cb9/en_cat-module-03.jpg" alt=""></button>
+                        <button class="btn" type="submit"><img class="elec-img" width="600px" src="https://k.nooncdn.com/cms/pages/20191006/23284486c59279f701cb09eecc542cb9/en_cat-module-02.jpg" alt=""></button>
+
+                </form>
+                <br><br>
+                <center>
+                <h2 class="categories-h">Home And Kitchen</h2>
+                <div class="products">
+                    <div class="row">
+                        {% for product in home %}
+                            <span>
+                                <img class="product-img" src="{{product['img_path']}}" alt="{{product['title']}}">
+                                    <p class="prouduct-name">{{product["title"]}}</p>
+                                    <p>{{product["desc"][0:20]}}</p>
+                                    <p>{{product["desc"][20:40]}}..</p>
+                                    <h5>USD {{product["price"]}}</h5>
+
+                                <!--add to wish-list-->
+                                <form action="/wish" method="post" class="form-group">
+                                    <input name="product_id" type="hidden" value="{{product['id']}}">
+                                    <button class="btn btn-danger-outline add-wish" id="wish" type="submit"><i class="fas fa-heart"></i></button>
+                                </form>
+
+                                <!--add to cart-->
+                                <form action="/cart" method="post" class="form-group">
+                                    <input name="product_id" type="hidden" value="{{product['id']}}">
+                                    <button class="btn btn-primary-outline add-cart" id="cart" type="submit"><i class="fas fa-shopping-cart"></i></button>
+                                </form>
+
+                            </span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </center>
+            </div>
+
+
+            <div  style="width: 93.5%;" id="s" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#s" data-slide-to="0" class="active"></li>
+                <li data-target="#s" data-slide-to="1"></li>
+
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img width="5%"  class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20200826/e063cf8544484a958dc4c099f3e92119/en_banner-01.png" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img width="5%" class="d-block w-100" src="https://k.nooncdn.com/cms/pages/20201020/3f088db7373ba547424a4572fda316a8/en_slider-01-uae.png" alt="Second slide">
+                </div>
+
+              </div>
+              <a class="carousel-control-prev" href="#s" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only border-dark">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#s" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only border-dark">Next</span>
+              </a>
+
+            </div>
+
+                <div id="sport">
+                    <form action="/search" method="post">
+                        <div class="row-sport">
+                            <input name="search" type="hidden" value="Sports">
+                            <!--<button class="btn" type="submit"><img class="elec-img" src="https://k.nooncdn.com/cms/pages/20200401/754246b96ef52116cc75fb2c4997b8a9/en_mb-category-03.png" alt=""></button>-->
+                            <!--<button class="btn" type="submit"><img class="elec-img" src="https://k.nooncdn.com/cms/pages/20200401/754246b96ef52116cc75fb2c4997b8a9/en_mb-category-07.png" alt=""></button>-->
+                            <!--<button class="btn" type="submit"><img class="elec-img" src="https://k.nooncdn.com/cms/pages/20200401/754246b96ef52116cc75fb2c4997b8a9/en_mb-category-04.png" alt=""></button>-->
+                            <!--<button class="btn" type="submit"><img class="elec-img" src="https://k.nooncdn.com/cms/pages/20200401/754246b96ef52116cc75fb2c4997b8a9/en_mb-category-06.png" alt=""></button>-->
+                            <button class="btn" type="submit"><img class="elec-img" src="https://k.nooncdn.com/cms/pages/20200316/3166deb54fd984c846e45deea38d13a2/en_cat-module-08.jpg" alt="/sports-and-outdoors/team-sports" ></button>
+                            <button class="btn" type="submit"><img class="elec-img" src="https://k.nooncdn.com/cms/pages/20200316/3166deb54fd984c846e45deea38d13a2/en_cat-module-03.jpg" alt="" ></button>
+                            <button class="btn" type="submit"><img class="elec-img" src="https://k.nooncdn.com/cms/pages/20200316/3166deb54fd984c846e45deea38d13a2/en_cat-module-07.jpg" alt="/build-your-own-gym" ></button>
+                            <button class="btn" type="submit"><img class="elec-img" src="https://k.nooncdn.com/cms/pages/20200316/3166deb54fd984c846e45deea38d13a2/en_cat-module-09.jpg" alt="/sports-and-outdoors/leisure-sports-and-games" ></button>
+                            <button class="btn" type="submit"><img class="elec-img" src="https://k.nooncdn.com/cms/pages/20200316/3166deb54fd984c846e45deea38d13a2/en_cat-module-05.jpg" alt="/sports-and-outdoors/boating-and-water-sports?f[is_fbn]=1" ></button>
+                            <button class="btn" type="submit"><img class="elec-img" src="https://k.nooncdn.com/cms/pages/20200316/3166deb54fd984c846e45deea38d13a2/en_cat-module-01.jpg" alt="/sports-and-outdoors/outdoor-recreation/camping-and-hiking-16354?f[is_fbn]=1" ></button>
+                        </div>
+                    </form>
+                    <br><br>
+                    <center>
+                    <h2 class="categories-h">Sports And Outdoors</h2>
+                    <div class="products">
+                        <div class="row">
+                            {% for product in sports %}
+                                <span>
+                                    <img class="product-img" src="{{product['img_path']}}" alt="{{product['title']}}">
+                                        <p class="prouduct-name">{{product["title"]}}</p>
+                                        <p>{{product["desc"][0:20]}}</p>
+                                        <p>{{product["desc"][20:40]}}..</p>
+                                        <h5>USD {{product["price"]}}</h5>
+
+                                    <!--add to wish-list-->
+                                    <form action="/wish" method="post" class="form-group">
+                                        <input name="product_id" type="hidden" value="{{product['id']}}">
+                                        <button class="btn btn-danger-outline add-wish" id="wish" type="submit"><i class="fas fa-heart"></i></button>
+                                    </form>
+
+                                    <!--add to cart-->
+                                    <form action="/cart" method="post" class="form-group">
+                                        <input name="product_id" type="hidden" value="{{product['id']}}">
+                                        <button class="btn btn-primary-outline add-cart" id="cart" type="submit"><i class="fas fa-shopping-cart"></i></button>
+                                    </form>
+
+                                </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    </center>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <h2 class="categories-h">New Arrivals</h2>
+                <br>
+                <br>
+                <div class="products">
+                    <div class="row">
+                        {% for product in products %}
+                            <span>
+                                <img class="product-img" src="{{product['img_path']}}" alt="{{product['title']}}">
+                                    <p class="prouduct-name">{{product["title"]}}</p>
+                                    <p>{{product["desc"][0:20]}}</p>
+                                    <p>{{product["desc"][20:40]}}..</p>
+                                    <h5>USD {{product["price"]}}</h5>
+
+                                <!--add to wish-list-->
+                                <form action="/wish" method="post" class="form-group">
+                                    <input name="product_id" type="hidden" value="{{product['id']}}">
+                                    <button class="btn btn-danger-outline add-wish" id="wish" type="submit"><i class="fas fa-heart"></i></button>
+                                </form>
+
+                                <!--add to cart-->
+                                <form action="/cart" method="post" class="form-group">
+                                    <input name="product_id" type="hidden" value="{{product['id']}}">
+                                    <button class="btn btn-primary-outline add-cart" id="cart" type="submit"><i class="fas fa-shopping-cart"></i></button>
+                                </form>
+
+                                    {% if product["category"][0][0:11] == "Electronics" %}
+                                        <button class="btn btn-primary product-tag-pc">Sale On {{product["category"][0][0:11]}}</button>
+
+                                    {% elif product["category"][0] == "Sports"%}
+                                        <button class="btn btn-danger product-tag-pc">75% Off On {{product["category"][0]}}</button>
+
+                                    {% elif product["category"][0] == "Home"%}
+                                        <button class="btn btn-success product-tag-pc">{{product["category"][0]}} And Kitchen</button>
+
+                                    {% elif product["category"][0] == "Fashion"%}
+                                        <button class="btn btn-warning product-tag-pc">New Colection Of {{product["category"][0]}}</button>
+                                    {% endif %}
+                            </span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <br>
+                <br>
+
+                <a href="#"><i class="fas fa-arrow-alt-circle-up"></i></a>
+
+<!----------------------spechial content------------------------>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends'layout.html' %}
+
+{% block title %}
+    Add product
+{% endblock %}
+
+
+
+{% block main %}
+<!----------------------spechial content------------------------>
+
+ <center>
+    <form action="/vendor/add_product" method="post">
+        <h3>New product</h3>
+        <div class="form-group">
+            <input size="30" max="20" name="title" id="title" type="text" autocomplete="off"  class="form-control" required autofocus placeholder="Product title">
+        </div>
+
+        <div class="form-group">
+            <input size="30" name="desc" id="desc" type="text" class="form-control" required placeholder="Descreption">
+        </div>
+
+        <div class="form-group">
+            <input size="30" name="price" id="price" type="text" class="form-control" required placeholder="Price">
+        </div>
+
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Catogries</label>
+          </div>
+          <select name="category" class="custom-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="1">Furniture</option>
+            <option value="2">Technology</option>
+            <option value="3">Clothes</option>
+            <option value="4">Food</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">product main image</label>
+            <input type="file" class="form-control-file" name="img" id="img">
+        </div>
+
+        <div id="err"></div>
+        <br>
+
+        <button class="btn btn-warning log">Submit</button>
+
+    </form>
+  </center>
+
+<!----------x------------spechial content---------------x--------->
+
+{% endblock %}

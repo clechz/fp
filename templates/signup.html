@@ -1,0 +1,80 @@
+{% extends'layout2.html' %}
+
+{% block title %}
+    Signup
+{% endblock %}
+
+{% block head %}
+<script defer src="static/signup.js"></script>
+{% endblock %}
+
+{% block main_login %}
+<!----------------------spechial content------------------------>
+ <center>
+
+    <!--if invalid email-->
+    {% with messages = get_flashed_messages() %}
+       {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{message}}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+          {% endfor %}
+       {% endif %}
+    {% endwith %}
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Warning! </strong>all products and pages are "SIMULATING" the experience of a real e-commerce website for educational purposes
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+    <form id="form" action="/signup" method="post">
+        <h4>Your name</h4>
+
+        <div class="form-group">
+            <input size="30" id="username" name="username" type="text" autocomplete="off"  class="form-control filed filed" placeholder="Name">
+        </div>
+
+        <p id="err_username"></p>
+
+        <br>
+
+        <h4>E-mail</h4>
+
+        <div class="form-group">
+            <input size="30" id="email" name="email" type="email" autocomplete=on  class="form-control filed filed" autofocus placeholder="Email">
+        </div>
+
+        <p id="err_email"></p>
+
+        <br>
+        <h4>Passowrd</h4>
+
+        <div class="form-group">
+            <input onkeyup="password_strength()" size="30" name="password" id="password" type="password" autocomplete="off" class="form-control filed filed" placeholder="Password">
+        </div>
+
+        <h6 id="strength"></h6>
+
+        <p id="err_password"></p>
+
+        <div class="form-group">
+            <input size="30" name="repassword" id="repassword" type="password" autocomplete="off" class="form-control filed filed"  placeholder="Password (Again)">
+        </div>
+
+        <p id="err_repassword"></p>
+
+        <br>
+
+        <button class="btn btn-warning log">Sign Up</button>
+
+    </form>
+  </center>
+
+<!----------------------spechial content------------------------>
+{% endblock %}

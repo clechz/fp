@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!--<link rel="icon" href="static/images/clechz.ico">-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="static/styles.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+        <script defer src="static/loader.js"></script>
+        {% block head %}
+        {% endblock %}
+        <title>Clechz: {% block title %}{% endblock %}</title>
+    </head>
+
+        <!--loader-->
+        <!--<div async class="pre-bgc">-->
+        <!--    <svg width="300" height="120" id="clackers">-->
+              <!-- Left arc path -->
+        <!--      <svg>-->
+        <!--        <path id="arc-left-up" fill="none" d="M 90 90 A 90 90 0 0 1 0 0"/>-->
+        <!--      </svg>-->
+              <!-- Right arc path -->
+        <!--      <svg>-->
+        <!--        <path id="arc-right-up" fill="none" d="M 100 90 A 90 90 0 0 0 190 0"/>-->
+        <!--      </svg>-->
+
+        <!--      <text x="150" y="50" fill="#ffffff" font-family="Helvetica Neue,Helvetica,Arial" font-size="18"-->
+        <!--            text-anchor="middle">-->
+        <!--        L O A D I N G-->
+        <!--      </text>-->
+        <!--      <circle cx="15" cy="15" r="15">-->
+                <!-- I used a python script to calculate the keyPoints and keyTimes based on a quadratic function. -->
+        <!--        <animateMotion dur="1.5s" repeatCount="indefinite"-->
+        <!--          calcMode="linear"-->
+        <!--          keyPoints="0.0;0.19;0.36;0.51;0.64;0.75;0.84;0.91;0.96;0.99;1.0;0.99;0.96;0.91;0.84;0.75;0.64;0.51;0.36;0.19;0.0;0.0;0.05;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0"-->
+        <!--          keyTimes="0.0;0.025;0.05;0.075;0.1;0.125;0.15;0.175;0.2;0.225;0.25;0.275;0.3;0.325;0.35;0.375;0.4;0.425;0.45;0.475;0.5;0.525;0.55;0.575;0.6;0.625;0.65;0.675;0.7;0.725;0.75;0.775;0.8;0.825;0.85;0.875;0.9;0.925;0.95;0.975;1.0">-->
+        <!--          <mpath xlink:href="#arc-left-up"/>-->
+        <!--        </animateMotion>-->
+        <!--      </circle>-->
+        <!--      <circle cx="135" cy="105" r="15" />-->
+        <!--      <circle cx="165" cy="105" r="15" />-->
+        <!--      <circle cx="95" cy="15" r="15">-->
+        <!--        <animateMotion dur="1.5s" repeatCount="indefinite"-->
+        <!--          calcMode="linear"-->
+        <!--          keyPoints="0.0;0.0;0.05;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0.0;0.19;0.36;0.51;0.64;0.75;0.84;0.91;0.96;0.99;1.0;0.99;0.96;0.91;0.84;0.75;0.64;0.51;0.36;0.19;0.0"-->
+        <!--          keyTimes="0.0;0.025;0.05;0.075;0.1;0.125;0.15;0.175;0.2;0.225;0.25;0.275;0.3;0.325;0.35;0.375;0.4;0.425;0.45;0.475;0.5;0.525;0.55;0.575;0.6;0.625;0.65;0.675;0.7;0.725;0.75;0.775;0.8;0.825;0.85;0.875;0.9;0.925;0.95;0.975;1.0">-->
+        <!--          <mpath xlink:href="#arc-right-up"/>-->
+        <!--        </animateMotion>-->
+        <!--      </circle>-->
+        <!--    </svg>-->
+        <!--</div>-->
+
+    <body defer>
+
+        <nav class="navbar fixed-top scrolling-navbar border-top-dark navbar-expand-md navbar-dark bg-dark search-nav mx-auto">
+            <a href="/" class="navbar-brand order-lg-0"> <!--order-lg-0 ml-lg-0 ml-2 mr-auto-->
+                <h1 class="navbar-brand">Clechz</h1>
+            </a>
+
+            <!--<a class="phone-nav-item" href="/" active><i style="color: white;" class="phone-nav-item fas fa-home main-nav"></i><span class="nav-text"></span></a>-->
+
+            <!--<a class="phone-nav-item" href="/wish" active><i class="phone-nav-item fas fa-heart main-nav add-wish"></i><span class="nav-text"></span></a>-->
+
+            <!--<a class="phone-nav-item" href="/cart" active><i class="phone-nav-item fas fa-shopping-cart main-nav add-cart"></i><span class="nav-text"></span></a>-->
+
+            <!--<a class="phone-nav-item" href="{% if session.get('user_id') %}/settings{% else %}/login{% endif %}" active><i style="color: #17a2b8;" class="fas fa-user phone-nav-item main-nav "></i></a>-->
+
+
+            <button  class="navbar-toggler align-self-start" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav mx-auto">
+                    <center>
+                        <li>
+                            <form class="input-group-btn" action="/search" method="post">
+
+                                <span class="container">
+                                        <span>
+                                            <input name="search" id="search_bar" class="form-control search-bar nav-item mr-sm-2" type="search" placeholder="What are you looking for?" size="70%" value="{% block search_value %}{% endblock %}" >
+                                        </span>
+
+                                        <span>
+                                            <button class="btn s btn btn-outline-warning nav-item my-2 my-sm search" type="submit"><i class="fas fa-search"></i></button>
+                                        </span>
+                                </span>
+                            </form>
+                        </li>
+                    </center>
+
+                    <span class=" mr-auto">
+                        <li class="nav-item">
+                            {% if session.user_id %}
+
+                                <div class="btn-group">
+                                    <form action="/settings">
+                                        <button style="margin-left:45px; margin-right:10px;" type="submit" class="btn n-b btn-outline-warning">Hello, {{username}}</button>
+                                    </form>
+                                    <form action="/logout">
+                                        <button type="submit" class="btn n-b btn-outline-warning">Logout</button>
+                                    </form>
+                                </div>
+
+                            {% else %}
+
+                                <div class="btn-group">
+                                    <form action="/login">
+                                        <button style="margin-left:105px; margin-right:10px;" type="submit" class="btn btn-outline-warning n-b">Login</button>
+                                    </form>
+                                    <form action="/signup" >
+                                        <button type="submit" class="btn btn-outline-warning n-b signup-btn">Signup</button>
+                                    </form>
+                                </div>
+
+                            {% endif %}
+                        </li>
+                    </span>
+                </ul>
+            </div>
+        </nav>
+
+        <!--phone-nav-->
+        <nav class="navbar phone-nav">
+
+            <a class="phone-nav-item" href="/" active><i class="phone-nav-item fas fa-home main-nav"></i><span class="nav-text"></span></a>
+
+            <a class="phone-nav-item" href="/wish" active><i class="phone-nav-item fas fa-heart main-nav add-wish"></i><span class="nav-text"></span></a>
+
+            <a class="phone-nav-item" href="/cart" active><i class="phone-nav-item fas fa-shopping-cart main-nav add-cart"></i><span class="nav-text"></span></a>
+
+            <a class="phone-nav-item" href="{% if session.get('user_id') %}/settings{% else %}/login{% endif %}" active><i class="fas fa-user phone-nav-item main-nav "></i></a>
+
+
+        </nav>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark items-bar nav-1">
+                <ul class="navbar-nav mx-auto">
+                    <span>
+                        <li class="nav-item main-item">
+                            <a href="/" class="nav-link" active><i class="fas fa-home main-nav"></i><span class="nav-text">Home</span></a>
+                        </li>
+                    </span>
+
+                    <span>
+                        <li class="nav-item main-item dropdown">
+                            <a href="/category" id="categories" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" active><i class="fas fa-tshirt main-nav"></i><span class="nav-text">Catogries</span></a>
+                            <div class="dropdown-menu" aria-labelledby="categories">
+                                <strong class="dropdown-item">Main Categories</strong>
+                            <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/#electronics">Electronics</a>
+                                <a class="dropdown-item" href="/#men">Men's Fashion</a>
+                                <a class="dropdown-item" href="/#sport">Sports And Outdoors</a>
+                                <a class="dropdown-item" href="/#home">Home And Furniture</a>
+                            </div>
+                        </li>
+                    </span>
+
+                    <!--</li>-->
+                    <!--    <li class="nav-item ">-->
+                    <!--    <a href="/orders" class="nav-link" active><i class="fas fa-dolly main-nav"></i>My Orders</a>-->
+                    <!--</li>-->
+                    <span>
+                        <li class="nav-item main-item">
+                            <a href="/wish" class="nav-link" active><i class="fas fa-heart main-nav"></i><span class="nav-text">Wish-list</span></a>
+                        </li>
+                    </span>
+
+                    <span>
+                        <li class="nav-item main-item">
+                            <a href="/cart" class="nav-link" active><i class="fas fa-shopping-cart main-nav"></i><span class="nav-text">Cart</span></a>
+                        </li>
+                    </span>
+
+                </ul>
+            </div>
+
+        </nav>
+
+
+                <!----------------------spechial content------------------------>
+                {% block main %}
+                {% endblock %}
+
+                <!-------------x---------spechial content----------x-------------->
+
+
+            </div>
+        </div>
+        <footer id="footer">
+
+            <nav class="navbar-dark bg-dark sm-fot border-top-dark">
+                <center>
+                    <h5 class="fot-cat">Contact Us</h5>
+                    <a class="sm pad-right" href="https://www.instgram.com/i.az.h/"><i class="fab fa-instagram"></i></a>
+                    <a class="sm" href="#"><i class="fab fa-youtube"></i></a>
+                    <a class="sm" href="#"><i class="fab fa-google"></i></a>
+                    <a class="sm" href="#"><i class="fab fa-twitter"></i></a>
+                </center>
+            </nav>
+
+            <!--<nav class="navbar-dark bg-dark end-nav">-->
+            <!--    <center>-->
+            <!--        <h6 class="fot-cat">Built With <span class="heart-end"><i class="far fa-heart"></i></span> By Clechz/Alzhrani.</h6>-->
+            <!--    </center>-->
+            <!--</nav>-->
+
+            <div class="navbar navbar-light">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-paypal"></i>
+                <i class="fas fa-money-bill-wave"></i>
+                <i class="fab fa-cc-apple-pay"></i>
+                <i class="fab fa-google-pay"></i>
+                <i class="fab fa-amazon-pay"></i>
+                <center>© All rights reserved to clechz.com, Inc.</center>
+
+            </div>
+        </footer>
+    </body>
+</html>

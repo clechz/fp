@@ -1,0 +1,69 @@
+{% extends'layout.html' %}
+
+{% block title %}
+    wish-list
+{% endblock %}
+
+
+
+{% block main %}
+
+    {% if not wish[0] %}
+    <center>
+        <img width="50%" src="https://k.nooncdn.com/s/app/2019/noon-bigalog/294e2949a0598de388916692f45f9c4a35eaaa4c/static/images/empty-state-cart.svg" alt="">
+        <br><br>
+        <h3 class="jsx-671104679 jsx-3349621030">Your Wish-List looks empty</h3>
+        <h6 class="jsx-671104679 jsx-3349621030">What are you waiting for?</h6>
+        <form action="/">
+            <button class="btn btn-outline-primary"><h5>Start Shopping</h5></button>
+        </form>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+
+    </center>
+    {% else %}
+        <br><br>
+        <h2 style="margin-left: 16px;"><i class="fas fa-heart add-wish"></i> Wish-list ({{p_sum}} items) </h2>
+        <br>
+        {% for p in wish %}
+            <div style="margin-left: 20px; margin-right: 20px;" class="wish">
+                <div style="margin-right: 20px;" class="row border">
+                    <span>
+                        <span>
+                            <img class="border-dark" src="{{p['img_path']}}" alt="{{p['title']}}">
+                        </span>
+
+                        <span clas="wish-p">
+                            <h5>{{p["title"]}}</h5>
+                        </span>
+
+                        <span class="wish-desc wish-p">
+                            <p>{{p["desc"]}}</p>
+                        </span>
+
+                        <span>
+                            <form action="/wish" method="post">
+                                <input name="product_id" type="hidden" value="{{p['product_id']}}">
+                                <input name="change" value="-1" type="hidden">
+                                <button class="btn btn-outline-danger d-wi"><i class="far fa-trash-alt"></i></button>
+                            </form>
+                        </span>
+
+                    </span>
+                </div>
+                <br>
+            </div>
+        {% endfor %}
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    {% endif %}
+
+
+{% endblock %}

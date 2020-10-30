@@ -1,0 +1,56 @@
+{% extends'layout.html' %}
+
+{% block title %}
+    Check Out
+{% endblock %}
+
+{% block head %}
+    <script defer src="static/location.js">
+        let location = document.querySelector("#location").value;
+        let add = document.querySelector("#add").innerText;
+
+        // TODO
+        // i want to get the location when add is clicked
+
+        navigator.geolocation.getCurrentPosition(function (position){
+            location = position.coords.latitude + ' ' + position.coords.longitude;
+
+        });
+
+        // if (location === null || location == '')
+        // {
+        //     add = "change location";
+        // }
+        // else
+        // {
+        //     add = "New location";
+        // }
+
+    </script>
+{% endblock %}
+
+{% block main %}
+    <button onclick="" class="btn btn-primary" id="add"></button>
+
+    <form action="/checkout" method="post">
+        <input type="hidden" value="{{total}}">
+        <input type="hidden" value="{{vat}}">
+        <input type="hidden" value="{{shipping}}">
+        <input type="hidden" value="{{cart}}">
+        <input id="location" readonly type="text" value="{% if not location %}Not Selected Yet{% else %}{{location}}{% endif %}">
+        <button type="submit">>></button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}

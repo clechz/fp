@@ -1,0 +1,57 @@
+{% extends'layout.html' %}
+
+{% block title %}
+    Checkout
+{% endblock %}
+
+{% block head %}
+    <script src="static/location.js"></script>
+{% endblock %}
+
+{% block main %}
+    <br><br>
+    <h2 style="margin-left: 40px; font-size: 50px;"><i class="fas fa-truck add-wish"></i></h2>
+    <br>
+
+    <div style="margin-left: 20px; margin-right: 20px;" class="wish">
+        {% for product in cart %}
+                <div class="row border">
+                    <span>
+                        <span>
+                            <img class="border-dark" width="35%" src="{{product['img_path']}}" alt="{{product['title']}}">
+                        </span>
+
+                        <span clas="wish-p">
+                            <h5>{{product["title"]}} <span class="sum-r"> USD {{product["price"]}}</span></h5>
+                        </span>
+                        <h6>QTY: {{product["product_count"]}}</h6>
+
+
+                    </span>
+                </div>
+                <br>
+        {% endfor %}
+    </div>
+    <br>
+    <br>
+    <div class="summary border">
+        <h5>Grand Total <span class="sum-r"> USD {{total}}</span></h5>
+        <br>
+        <button disabled class="btn btn-outline-primary"><h5 class="bold">Confirm</h5></button>
+        <br>
+        <br>
+        <h5 style="color: #FF4040;">Comming Very Soon!</h5>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+{% endblock %}

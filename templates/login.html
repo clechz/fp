@@ -1,0 +1,67 @@
+{% extends'layout2.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="static/styles_login.css">
+<script defer src="static/login.js"></script>
+{% endblock %}
+
+{% block main_login %}
+<!----------------------spechial content------------------------>
+
+<center>
+
+    <!--if invalid email-->
+    {% with messages = get_flashed_messages() %}
+       {% if messages %}
+          {% for message in messages %}
+          {% if message[0] == 'y' %}
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <strong>{{message}}!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% else %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>{{message}}!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+          {% endfor %}
+       {% endif %}
+    {% endwith %}
+
+    </br>
+
+    <form id="form" action="/login" method="post">
+        <h3>E-mail</h3>
+        <div class="form-group">
+            <input size="30" name="email" id="email" type="email" autocomplete="off"  class="form-control filed filed" autofocus placeholder="Email or Username">
+        </div>
+
+        <p id="err_email"></p>
+
+        <br>
+
+        <h4>Passowrd</h4>
+        <div class="form-group">
+            <input onkeyup="password_strength()" size="30" name="password" id="password" type="password" class="form-control filed filed" placeholder="Password">
+        </div>
+
+        <p id="err_password"></p>
+
+        <div id="err"></div>
+        <br>
+
+        <button class="btn btn-warning log">Login</button>
+
+    </form>
+</center>
+<!----------------------spechial content------------------------>
+{% endblock %}

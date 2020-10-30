@@ -1,0 +1,68 @@
+{% extends'layout.html' %}
+
+{% block title %}
+    Settings
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="static/styles_login.css">
+<script defer src="static/change_password.js"></script>
+{% endblock %}
+
+{% block main %}
+<!----------------------spechial content------------------------>
+<center>
+    <br>
+    <br>
+    <h3>Change Password</h3>
+
+    <form id="form" action="/change_password" method="post">
+
+        <p id="err_username"></p>
+
+        <br>
+
+        <h4>E-mail</h4>
+
+        <div class="form-group">
+            <input readonly size="30" id="email" name="email" type="email" autocomplete=on  class="form-control filed" autofocus value="{{email}}">
+        </div>
+
+        <p id="err_email"></p>
+
+        <br>
+
+        <h4>Old Password</h4>
+
+        <div class="form-group">
+            <input size="30" name="password" id="password" type="password" autocomplete="off" class="form-control filed"  placeholder="Old Password">
+        </div>
+
+        <h4>New Password</h4>
+
+        <p id="err_password"></p>
+
+        <div class="form-group">
+            <input onkeyup="password_strength()" size="30" name="newpassword" id="newpassword" type="password" autocomplete="off" class="form-control filed" placeholder="New Password">
+        </div>
+
+        <h6 id="strength"></h6>
+
+        <p id="err_newpassword"></p>
+
+        <br>
+
+        <button class="btn btn-warning log">Submit</button>
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+</center>
+
+<!----------------------spechial content------------------------>
+{% endblock %}

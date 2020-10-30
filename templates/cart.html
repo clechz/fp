@@ -1,0 +1,126 @@
+{% extends'layout.html' %}
+
+{% block title %}
+    Cart
+{% endblock %}
+
+{% block main %}
+
+    {% if not cart[0] %}
+    <center>
+        <img width="50%" src="https://k.nooncdn.com/s/app/2019/noon-bigalog/294e2949a0598de388916692f45f9c4a35eaaa4c/static/images/empty-state-cart.svg" alt="">
+        <br><br>
+        <h3 class="jsx-671104679 jsx-3349621030">Your shopping cart looks empty</h3>
+        <h6 class="jsx-671104679 jsx-3349621030">What are you waiting for?</h6>
+        <form action="/">
+            <button class="btn btn-outline-primary"><h5>Start Shopping</h5></button>
+        </form>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+    </center>
+    {% else %}
+
+        <center>
+            <!--if invalid email-->
+            {% with messages = get_flashed_messages() %}
+               {% if messages %}
+                  {% for message in messages %}
+                      {% if message[0] == 'D' %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{message}}</strong>!
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                      {% else %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{message}}</strong>!
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                      {% endif %}
+                  {% endfor %}
+               {% endif %}
+            {% endwith %}
+        </center>
+
+        <br><br>
+        <h2 style="margin-left: 20px;"><i class="fas fa-shopping-cart add-cart"></i> My Cart ({{p_sum}} items) </h2>
+        <br>
+        {% for p in cart %}
+            <div style="margin-left: 20px; margin-right: 20px;" class="cart border">
+                <div class="row">
+                        <span>
+                            <span>
+                                <button id="yh" size="10" class="btn btn-outline-success" type="text">You have {{p["product_count"]}} of {{p["title"][0:7]}}..</button>
+
+                                <span>
+                                    <form action="/cart" method="post">
+                                        <input name="product_id" type="hidden" value="{{p['product_id']}}">
+                                        <input name="change" value="-1" type="hidden">
+                                        <button class="btn btn-outline-danger d-a d-a-1"><i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                </span>
+
+                                <span>
+                                    <form action="/cart" method="post">
+                                        <input name="product_id" type="hidden" value="{{p['product_id']}}">
+                                        <input name="change" value="1" type="hidden">
+                                        <button class="btn btn-outline-primary d-a d-a-2"><i class="far fa-plus-square"></i></button>
+                                    </form>
+                                </span>
+                            </span>
+
+                            <span>
+                                <img class="border-dark" src="{{p['img_path']}}" alt="{{p['title']}}">
+                            </span>
+
+                            <span clas="wish-p">
+                                <h6>{{p["title"]}}<span class="sum-r"> USD {{p["price"]}}</span></h6>
+                            </span>
+
+                        </span>
+                    </div>
+                </div>
+            <br>
+            </div>
+
+
+        {% endfor %}
+        <br>
+        <br>
+
+        <div class="summary border">
+            <tr><th><h3 class="dark">Order Summary</h3></th></tr>
+            <br>
+                <p>Subtotal <span class="sum-r">USD {{subtotal}}</span></p>
+                <p>Shipping <span class="sum-r">USD {{shipping}}</span></p>
+            <h5>Total <span class="sum-r">USD {{total}}</span></h5>
+
+            <br>
+            <form action="/checkout" method="post">
+                <input name="products" type="hidden" value="{{cart}}">
+                <input name="shipping" type="hidden" value="{{shipping}}">
+                <input name="total" type="hidden" value="{{total}}">
+                <input name="p_sum" type="hidden" vlaue="{{p_sum}}">
+                <button class="btn btn-outline-primary"><h5 class="bold">CHECKOUT NOW</h5></button>
+            </form>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    {% endif %}
+
+
+{% endblock %}

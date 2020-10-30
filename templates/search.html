@@ -1,0 +1,80 @@
+{% extends'layout.html' %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block search_value %}
+{{search}}
+{% endblock %}
+
+{% block main %}
+        <!--give a value to the search filed when sorting to make prosses faster-->
+        <form action="/search" method="post">
+            <input name="search" type="hidden" value="{{search}}">
+        </form>
+
+        {% if not result[0] %}
+            <center>
+                <br>
+                <br>
+                <br>
+                <img width="50%" src="https://k.nooncdn.com/s/app/2019/noon-bigalog/953380d92fded8efb914821f809473afbdf5c9c7/static/images/empty-state-product.png" alt="">
+                <br><br>
+                <h5 class="jsx-671104679 jsx-3349621030">We couldn’t find what you were looking for</h5>
+                <form action="/">
+                    <button class="btn btn-outline-primary"><h5>continue Shopping</h5></button>
+                </form>
+            </center>
+        {% else %}
+        <br>
+        <br>
+
+        <center>
+            <h3 class="search-h">{{result_len}} Results For {{search}}..</h3>
+        </center>
+        <br>
+
+        <div class="products">
+            <div class="row">
+                {% for product in result %}
+                    <center>
+                        <span>
+                            <a class="products" href="/products/{{product['id']}}"><img class="product-img" src="{{product['img_path']}}" alt="{{product['title']}}"></a>
+                                <p class="prouduct-name">{{product["title"]}}</p>
+                                <p>{{product["desc"][0:20]}}</p>
+                                <p>{{product["desc"][20:40]}}..</p>
+                                <h5>USD {{product["price"]}}</h5>
+
+                            <!--add to wish-list-->
+                            <form action="/wish" method="post" class="form-group">
+                                <input name="product_id" type="hidden" value="{{product['id']}}">
+                                <button class="btn btn-danger-outline add-wish" id="wish" type="submit"><i class="fas fa-heart"></i></button>
+                            </form>
+
+                            <!--add to cart-->
+                            <form action="/cart" method="post" class="form-group">
+                                <input name="product_id" type="hidden" value="{{product['id']}}">
+                                <button class="btn btn-primary-outline add-cart" id="cart" type="submit"><i class="fas fa-shopping-cart"></i></button>
+                            </form>
+
+                            {% if product["rating"] >= 4.9 %}
+                                <button class="btn btn-primary product-tag-pc">Clechz choice</button>
+                            {% endif %}
+
+                        </span>
+                    </center>
+                {% endfor %}
+
+            </div>
+        </div>
+        {% endif %}
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends'layout2.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="static/styles_login.css">
+{% endblock %}
+
+{% block main_login %}
+<!----------------------spechial content------------------------>
+ <center>
+    <h2>vendor login</h2>
+    <form action="/vendor/login" method="post">
+        <h3>E-mail</h3>
+        <div class="form-group">
+            <input size="30" name="email" id="email" type="email" autocomplete="off"  class="form-control" required autofocus placeholder="Email or Username">
+        </div>
+
+        <br>
+
+        <h4>Passowrd</h4>
+        <div class="form-group">
+            <input size="30" name="password" id="password" type="password" class="form-control" required placeholder="Password">
+        </div>
+
+        <div id="err"></div>
+        <br>
+
+        <button class="btn btn-warning log">Login</button>
+
+    </form>
+  </center>
+
+<!----------------------spechial content------------------------>
+{% endblock %}
