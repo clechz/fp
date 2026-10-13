@@ -1,50 +1,41 @@
-# CS50 Final Project: Clechz
+# Clechz Storefront
 
-## Description
-Clechz is a web-based e-commerce simulation that lets users explore and interact with a virtual shopping experience. Users can add products to a cart or wish list, search for items, and checkout, all powered by a SQLite database.
+A CS50 final-project e-commerce simulation built with Flask, SQLite, and server-rendered HTML.
 
-## Technologies Used
-- **Flask**: Backend framework
-- **JavaScript**: Form validation and sliders
-- **HTML5**: Templates
-- **CSS3**: Styling
-- **SQLite3**: Database
-- **Various small libraries and packages**
+The project explores the flow from browsing a catalogue to saving products, adjusting a cart, and reviewing a checkout summary. It does not process payments or complete real orders.
 
-## Website Pages and Features
-- **Home Page (/):**
-  - View main categories and products
-  - Personalized recommendations based on the products in your wish list or cart
-  - Featured products and promotions
+## Implemented flows
 
-- **Search (/search):**
-  - Search for products by name or category
-  - Filter and sort search results
+| Route | Behavior |
+| --- | --- |
+| `/` | Catalogue, categories, and category-based suggestions |
+| `/signup`, `/login`, `/logout` | Account and session flow |
+| `/search` | Search by product title or category, with sorting |
+| `/wish` | Add and remove saved products |
+| `/cart` | Cart quantities and price summary |
+| `/settings`, `/change_password` | Settings page and password-change flow |
+| `/checkout` | Review a checkout summary |
 
-- **Wish List (/wish):**
-  - View products added to your wish list
-  - Remove products from your wish list
+## How it is organized
 
-- **Cart (/cart):**
-  - View products added to your cart
-  - Summary of all products in the cart
-  - Update quantities of products in the cart
-  - Remove products from the cart
+`application.py` contains the Flask routes and database queries. Templates live in `templates/`, browser assets in `static/`, and the SQLite database in `main.db`. The application imports Flask-Session, Werkzeug, CS50 SQL, and a local `helpers` module.
 
-- **Settings (/settings):**
-  - Update profile information (e.g., change password)
-  - Manage notification preferences
+Recommendations use product categories and saved/cart data; they are not a machine-learning recommendation system.
 
-- **Checkout (/checkout):**
-  - Review products in your cart
-  - Checkout confirmation coming soon
+## Running the historical project
 
-## Future Enhancements
-- Checkout confirmation and payment integration
-- User reviews and ratings
-- Enhanced product recommendations
-- Order history and tracking
+The current checkout is incomplete: `application.py` imports `helpers.py`, but that file is absent from the repository root. There is also no dependency manifest establishing a reproducible environment.
 
-For more info, check my [YouTube](https://www.youtube.com) video.
+Restore the original helper module and compatible dependencies before trying to run the app. Once those are restored, the expected Flask entry point is:
 
-This was my CS50 final project!
+```bash
+flask --app application run
+```
+
+Use a disposable local database with synthetic data.
+
+## Current status
+
+This is a historical learning project. The login route contains a hard-coded password bypass that must be removed before any deployment. Authentication and password-change behavior need review, and checkout remains a summary rather than an order or payment flow.
+
+The repository documents early full-stack work; it should not be presented as a production storefront.
